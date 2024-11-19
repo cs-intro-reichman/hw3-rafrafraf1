@@ -22,6 +22,7 @@ public class Algebra {
    		System.out.println(sqrt(36));
 		System.out.println(sqrt(263169));
    		System.out.println(sqrt(76123));
+		// note for reader: should be rather easy to understand so i have not left unnecessary comments all over my (lovely) code
 	}  
 
 	// Returns x1 + x2
@@ -96,6 +97,3 @@ public class Algebra {
 	}	  	  
 }
 
-
-// for some reason my jdk bin path isnt showing up so this is a temporary fix for the session below:
-// $env:PATH = "C:\Program Files\Java\jdk-23\bin;" + $env:PATH 

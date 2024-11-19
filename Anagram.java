@@ -29,8 +29,25 @@ public class Anagram {
 
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
-		// Replace the following statement with your code
-		return false;
+		str1 = preProcess(str1);
+		str2 = preProcess(str2);
+		if (str1.length() != str2.length()) {
+			return false; // ignoring spaces, anagrams must have the same length... 
+		}
+
+		int indexOfChar;
+		char currChar;
+		for (int i = 0; i < str2.length(); i++) { // i am not doing a nested for loop >:( very unnecessary.
+			currChar = str2.charAt(i);
+			indexOfChar = str1.indexOf(currChar);
+			if (indexOfChar == -1) {
+				return false; // char doesnt match so we can just return false now
+			}
+			else { // removes char from str1 to make sure all chars match one-to-one
+				str1 = str1.substring(0, indexOfChar) + str1.substring(indexOfChar+1);
+			}
+		}
+		return true;
 	}
 	   
 	// Returns a preprocessed version of the given string: all the letter characters are converted
@@ -38,13 +55,20 @@ public class Anagram {
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
 	private static String preProcess(String str) {
 		// Replace the following statement with your code
-		return str;
+		return str.toLowerCase().replaceAll(" ", "");
 	} 
 	   
 	// Returns a random anagram of the given string. The random anagram consists of the same
 	// characters as the given string, re-arranged in a random order. 
-	public static String randomAnagram(String str) {
+	public static String randomAnagram(String str) { // java atleast has pass-by-value so i can modify str freely :)
 		// Replace the following statement with your code
-		return str;
+		String newStr = "";
+		int rando;
+		while (str.length() > 0) {
+			rando = (int) (Math.random() * str.length()); // generates a random index of str
+			newStr = newStr + str.charAt(rando); // put that char into newstr
+			str = str.substring(0, rando) + str.substring(rando+1); // remove char from str
+		}
+		return newStr;
 	}
 }
