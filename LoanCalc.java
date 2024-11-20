@@ -12,14 +12,8 @@ public class LoanCalc {
 		double loan = Double.parseDouble(args[0]);
 		double rate = Double.parseDouble(args[1]);
 		int n = Integer.parseInt(args[2]);
-		System.out.print("Loan = " + (int) loan + ", interest rate = ");
-		if (rate == Math.floor(rate)) {
-			// If the number is a whole number, print it as an int
-			System.out.println((int) rate + "%, periods = " + n);
-		}
-		else {
-			System.out.println(rate + "%, periods = " + n);
-		}
+		System.out.print("Loan sum = " + loan + ", interest rate = " + rate + "%, periods = " + n);
+		
 		// Computes the periodical payment using brute force search
 		System.out.print("\nPeriodical payment, using brute force: ");
 		System.out.println(String.format("%.2f", bruteForceSolver(loan, rate, n, epsilon)) );
@@ -87,16 +81,9 @@ public class LoanCalc {
 }
 
 /*
- 
- ::error::The output for test LoanCalc Test with Loan Sum 100000, 
-Interest Rate 3%25, and Periods 12 did not match%0AExpected:
-%0ALoan sum = 100000.0, interest rate = 3.0%25, periods = 12%0APeriodical payment,
- using brute force: 9753.60%0Anumber of iterations: 1420268%0APeriodical payment,
-  using bi-section search: 9753.60%0Anumber of iterations: 27
-  
-  %0AActual:%0ALoan = 100000.0, interest rate = 1.03%25, periods = 12
-  %0AIf your periodical payment is 10000.0, your ending balance is: -3601%0A%0APeriodical payment,
-   using brute force: 9753%0Anumber of iterations: 1420268%0A%0APeriodical payment,
-    using bi-section search: 9753%0Anumber of iterations: 22
+ Expected: %0ALoan sum = 100000.0, interest rate = 3.0%25, periods = 12%0APeriodical payment, using brute force: 9753.60
+ %0Anumber of iterations: 1420268%0APeriodical payment, using bi-section search: 9753.60%0Anumber of iterations: 27
+ %0AActual:%0ALoan sum = 100000.0, interest rate = 3.0%25, periods = 12%0APeriodical payment, using brute force: 9753.60
+ %0Anumber of iterations: 1420268%0APeriodical payment, using bi-section search: 9753.60%0Anumber of iterations: 27
 
  */
