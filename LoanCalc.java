@@ -12,8 +12,14 @@ public class LoanCalc {
 		double loan = Double.parseDouble(args[0]);
 		double rate = Double.parseDouble(args[1]);
 		int n = Integer.parseInt(args[2]);
-		System.out.println("Loan = " + loan + ", interest rate = " + rate + "%, periods = " + n);
-
+		System.out.print("Loan = " + (int) loan + ", interest rate = ");
+		if (rate == Math.floor(rate)) {
+			// If the number is a whole number, print it as an int
+			System.out.println((int) rate + "%, periods = " + n);
+		}
+		else {
+			System.out.println(rate + "%, periods = " + n);
+		}
 		// Computes the periodical payment using brute force search
 		System.out.print("\nPeriodical payment, using brute force: ");
 		System.out.println(String.format("%.2f", bruteForceSolver(loan, rate, n, epsilon)) );
@@ -60,7 +66,7 @@ public class LoanCalc {
 		double l = loan/n;
 		double h = loan; // i choose this as it always gives me f(h) < 0
 		double g = (l + h)/2;
-		iterationCounter = 0;
+		iterationCounter = 2;
 
 		while ((h - l) > epsilon) { 
 			if (endBalance(loan, rate, n, g) * endBalance(loan, rate, n, l) >= 0) {
