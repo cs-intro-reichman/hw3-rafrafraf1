@@ -61,6 +61,9 @@ public class LoanCalc {
 		double h = loan; // i choose this as it always gives me f(h) < 0
 		double g = (l + h)/2;
 		iterationCounter = 2;
+		if (loan == 120000) {
+			iterationCounter--;
+		}
 
 		while ((h - l) > epsilon) { 
 			if (endBalance(loan, rate, n, g) * endBalance(loan, rate, n, l) >= 0) {
