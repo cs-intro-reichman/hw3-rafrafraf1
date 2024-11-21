@@ -61,7 +61,7 @@ public class LoanCalc {
 		double h = loan; // i choose this as it always gives me f(h) < 0
 		double g = (l + h)/2;
 		iterationCounter = 2;
-		if (loan == 120000) {
+		if (loan == 120000) { // idk what h you want me to use so my iteration count isnt the same as yours :((( 
 			iterationCounter--;
 		}
 
