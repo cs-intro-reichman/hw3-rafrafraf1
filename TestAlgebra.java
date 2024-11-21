@@ -1,6 +1,6 @@
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.io.IOException;
 
 public class TestAlgebra {
     private static int totalTests = 0;
