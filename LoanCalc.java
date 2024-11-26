@@ -60,20 +60,15 @@ public class LoanCalc {
 		double l = loan/n;
 		double h = loan; // i choose this as it always gives me f(h) < 0
 		double g = (l + h)/2;
-		iterationCounter = 2;
-		if (loan == 120000) { // idk what h you want me to use so my iteration count isnt the same as yours :((( 
-			iterationCounter--;
-		}
+		iterationCounter = 0;
 
 		while ((h - l) > epsilon) { 
-			if (endBalance(loan, rate, n, g) * endBalance(loan, rate, n, l) >= 0) {
+			if (endBalance(loan, rate, n, g) * endBalance(loan, rate, n, l) > 0) {
 				// solution is inbetween g and h
-				g += epsilon;
 				l = g;
 			}
 			else {
 				// solution is inbetween l and g
-				g -= epsilon;
 				h = g;
 			}
 			g = (l + h)/2;
@@ -84,10 +79,8 @@ public class LoanCalc {
 }
 
 /*
-%0AExpected:%0ALoan sum = 100000.0, interest rate = 3.0%25, periods = 12
-%0APeriodical payment, using brute force: 9753.60%0Anumber of iterations: 1420268
-%0APeriodical payment, using bi-section search: 9753.60%0Anumber of iterations: 27
-%0AActual:  %0ALoan sum = 100000.0, interest rate = 3.0%25, periods = 12
-%0APeriodical payment, using brute force: 9753.60%0Anumber of iterations: 1420268%0A
-%0APeriodical payment, using bi-section search: 9753.60%0Anumber of iterations: 27
+  100000, Interest Rate 3%, and Periods 12 -> 27
+  75000, Interest Rate 4%, and Periods 24 -> 27
+  50000, Interest Rate 5%, and Periods 36 -> 26
+  120000, Interest Rate 3.5%, and Periods 60 -> 27
  */
